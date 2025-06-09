@@ -1,0 +1,64 @@
+﻿<Window x:Class="Kursovaya.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya"
+        mc:Ignorable="d"
+        Title="авторизация"  Height="1080" Width="1920"  Background="#333533">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--строки-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.2*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.4*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+
+
+
+        <Rectangle Grid.Row="2" Grid.Column="1" Grid.RowSpan="9"  Grid.ColumnSpan="7" Fill="#5E676767" OpacityMask="Black" StrokeThickness="5" RadiusX="5" RadiusY="5">
+            <Rectangle.Stroke>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#9549d6" Offset="0.687"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Stroke>
+        </Rectangle>
+
+
+        <Label x:Name="LblLogin" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"  Grid.ColumnSpan="7" Content="Авторизируйтесь"   FontSize="30" Foreground="White" FontWeight="Bold"/>
+
+        <TextBox x:Name="TxtBxLogin" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="5" Background="#33969696" BorderBrush="#FFCECECE" Foreground="White" FontSize="35" CaretBrush="#9549d6" SelectionBrush="#9549d6" />
+        <Label x:Name="LblVxodLog" Grid.Row="5" Grid.Column="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" VerticalAlignment="Top"   Content="логин"   FontSize="30" Foreground="#3FFFFFFF"/>
+
+        <PasswordBox x:Name="TxtBxPas"  Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="5" Background="#33969696" BorderBrush="#FFCECECE" SelectionBrush="#9549d6" FontSize="35" Foreground="White" CaretBrush="#9549d6" />
+        <Label x:Name="LblVxodPass" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="5" HorizontalAlignment="Left" VerticalAlignment="Top"   Content="пароль"   FontSize="30" Foreground="#19FFFFFF"/>
+
+
+        <Button x:Name="BtnLogin" Grid.Row="9" Grid.Column="3" Grid.ColumnSpan="3" HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Height="70"  Content="Войти"   FontSize="30" Foreground="White" Background="#9549d6" Click="BtnLogin_Click" />
+
+    </Grid>
+</Window>

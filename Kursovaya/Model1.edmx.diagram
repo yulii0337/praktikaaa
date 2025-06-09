@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9a3c4fffdc24408ca2a65964cb0d177c" Name="Diagram1">
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.администратор" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.адрес" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.аунтификация_администратора" Width="1.5" PointX="12" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.аунтификация_сотрудника" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.инвентаризация_склада" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.категория_товара" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.пол" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.поставщики" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.приемка_товара" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.размеры" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.склад" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.сотрудник" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.статус_качества_товара" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.товары" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.товары_на_складе" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="Складской_учет_одеждыModel.цвет" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkадминистраторID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkадрес1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkадресID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkсотрудник3ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkскладID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkсотрудникID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkтоварыID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkкатегория_товараID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkполID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkпоставщикиID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkсотрудник1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkстатус_качества_товараID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkтовары2ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkразмерыID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkсклад1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.Fkтовары1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="Складской_учет_одеждыModel.FkцветID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

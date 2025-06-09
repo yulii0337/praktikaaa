@@ -1,0 +1,114 @@
+﻿<Window x:Class="Kursovaya.NewInventariz"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya"
+        mc:Ignorable="d"
+       Title="Новая инвентаризация"  Height="1080" Width="1920"  Background="#333533">
+    <Grid>
+        <!--столбцы-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.2*"></ColumnDefinition>
+            <ColumnDefinition Width="0.4*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="0.4*"></ColumnDefinition>
+            <ColumnDefinition Width="0.3*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.1*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.4*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.3*" ></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <!--строки-->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.12*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.06*"></RowDefinition>
+            <RowDefinition Height="0.1*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Grid.ColumnSpan="13" Fill="#202020"></Rectangle>
+        <Label x:Name="LblDobavTovar" Content="Регистрация нового товара" Grid.ColumnSpan="3" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+
+        <Rectangle Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="6" Grid.RowSpan="10" Fill="#202020"></Rectangle>
+        <!--Основ инфа-->
+        <Label x:Name="LblOsnovInfa" Content="Основная информация" Grid.ColumnSpan="3" Grid.Row="2" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+
+        <!--Артикул-->
+        <Label x:Name="LblArticul" Content="Артикул"  Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <TextBox x:Name="TxtBoxArticul" Grid.Row="4"  Grid.Column="2" Height="30"   VerticalAlignment="Top" />
+
+        <!--Наименование-->
+        <Label x:Name="LblName" Content="Наименование"  Grid.Row="4" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <TextBox x:Name="TxtBoxName" Grid.Row="4"  Grid.Column="5" Height="30"  VerticalAlignment="Top" />
+
+        <!--Категория-->
+        <Label x:Name="LblKategoria" Content="Категория"  Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <ComboBox x:Name="CmbBoxKategoria" Grid.Row="6"  Grid.Column="2" Height="30" SelectedItem="{Binding категория_товара.наименование}"/>
+
+        <!--Пол-->
+        <Label x:Name="LblPol" Content="Пол"  Grid.Row="6" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <ComboBox x:Name="CmbBoxPol" Grid.Row="6"  Grid.Column="5" Height="30" />
+
+        <!--Размер-->
+        <Label x:Name="LblSize" Content="Размер"  Grid.Row="8" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <ComboBox x:Name="CmbBoxSize" Grid.Row="8"  Grid.Column="2" Height="30" />
+
+        <!--Цвет-->
+        <Label x:Name="LblColor" Content="Цвет"  Grid.Row="8" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <ComboBox x:Name="CmbBoxColor" Grid.Row="8"  Grid.Column="5" Height="30" />
+
+        <!--Цена-->
+        <Label x:Name="LblPrice" Content="Цена"  Grid.Row="10" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <TextBox x:Name="TxtBoxPrice" Grid.Row="10"  Grid.Column="2" Height="30"  VerticalAlignment="Top" />
+
+        <!--Поставщик-->
+        <Label x:Name="LblPostavka" Content="Поставщик"  Grid.Row="10" Grid.Column="4" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <ComboBox x:Name="CmbBoxPostavka" Grid.Row="10"  Grid.Column="5" Height="30" />
+
+        <!--Описание-->
+
+        <Rectangle Grid.Row="13" Grid.Column="1" Grid.RowSpan="10" Grid.ColumnSpan="6" Fill="#202020"></Rectangle>
+        <Label x:Name="LblOpisanie" Content="Описание" Grid.ColumnSpan="1" Grid.Row="13" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <TextBox x:Name="TxtBoxOpisanie" Grid.Row="15"  Grid.Column="1" Grid.RowSpan="4" Grid.ColumnSpan="3" Height="150"   VerticalAlignment="Top" />
+
+        <!--Состав-->
+        <Label x:Name="LblSostav" Content="Состав" Grid.ColumnSpan="1" Grid.Row="20" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Left" FontSize="20" Foreground="White"  />
+        <TextBox x:Name="TxtBoxSostav" Grid.Row="21"  Grid.Column="1" Grid.RowSpan="3" Grid.ColumnSpan="3" Height="60"   VerticalAlignment="Top" />
+
+        <!--Ориентация-->
+
+        <Button x:Name="RegistrBttn" Grid.Row="24" Grid.Column="11" Content="Зарегистрировать" Height="30"     Background="#495057" Foreground="White" VerticalAlignment="Top" Click="RegistrBttn_Click" FontSize="18" ></Button>
+        <Button x:Name="NazadBttn" Grid.Row="24" Grid.Column="1" Content="Назад" Height="30"     Background="#495057" Foreground="White"  VerticalAlignment="Top"  FontSize="18" Click="NazadBttn_Click_1" ></Button>
+        <Button x:Name="SozdatOtchetBttn" Grid.Row="24" Grid.Column="5" Content="Создать отчет" Height="30"     Background="#495057" Foreground="White"  VerticalAlignment="Top"  FontSize="18" Click="SozdatOtchetBttn_Click"  ></Button>
+
+    </Grid>
+</Window>

@@ -1,0 +1,1172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SkladTov3En" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="администратор">
+          <Key>
+            <PropertyRef Name="ID_админ" />
+          </Key>
+          <Property Name="ID_админ" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="фамилия" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="имя" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="отчество" Type="nvarchar" MaxLength="255" />
+          <Property Name="дата_рождения" Type="date" Nullable="false" />
+          <Property Name="номер_телефона" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="адрес">
+          <Key>
+            <PropertyRef Name="ID_адреса" />
+          </Key>
+          <Property Name="ID_адреса" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="страна" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="город" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="улица" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="дом" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="аунтификация_администратора">
+          <Key>
+            <PropertyRef Name="ID_аунтиф_админа" />
+          </Key>
+          <Property Name="ID_аунтиф_админа" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_админ" Type="int" Nullable="false" />
+          <Property Name="логин" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="пароль" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="аунтификация_сотрудника">
+          <Key>
+            <PropertyRef Name="ID_аунтиф_сотруд" />
+          </Key>
+          <Property Name="ID_аунтиф_сотруд" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_сотрудник" Type="int" Nullable="false" />
+          <Property Name="логин" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="пароль" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="инвентаризация_склада">
+          <Key>
+            <PropertyRef Name="ID_инвентаризация_склада" />
+          </Key>
+          <Property Name="ID_инвентаризация_склада" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="дата_инвентаризации" Type="date" Nullable="false" />
+          <Property Name="ID_склада" Type="int" Nullable="false" />
+          <Property Name="ID_товара" Type="int" Nullable="false" />
+          <Property Name="расчетный_остаток" Type="int" Nullable="false" />
+          <Property Name="фактический_остаток" Type="int" Nullable="false" />
+          <Property Name="ID_сотрудник" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="категория_товара">
+          <Key>
+            <PropertyRef Name="ID_категории_товара" />
+          </Key>
+          <Property Name="ID_категории_товара" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="пол">
+          <Key>
+            <PropertyRef Name="ID_пола" />
+          </Key>
+          <Property Name="ID_пола" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="поставщики">
+          <Key>
+            <PropertyRef Name="ID_поставщиков" />
+          </Key>
+          <Property Name="ID_поставщиков" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наименование_поставщика" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="почта" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="номер_телефона" Type="nvarchar" MaxLength="15" Nullable="false" />
+          <Property Name="ID_адреса" Type="int" Nullable="false" />
+          <Property Name="фамилия" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="имя" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="отчество" Type="nvarchar" MaxLength="255" />
+          <Property Name="ИНН" Type="nvarchar" MaxLength="12" Nullable="false" />
+        </EntityType>
+        <EntityType Name="приемка_товара">
+          <Key>
+            <PropertyRef Name="ID_приемка_товара" />
+          </Key>
+          <Property Name="ID_приемка_товара" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_товара" Type="int" Nullable="false" />
+          <Property Name="ID_статуса_качества_товара" Type="int" Nullable="false" />
+          <Property Name="количество_поступления" Type="int" Nullable="false" />
+          <Property Name="количество_принятого_товара" Type="int" Nullable="false" />
+          <Property Name="ID_сотрудник" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="размеры">
+          <Key>
+            <PropertyRef Name="ID_размера_одежды" />
+          </Key>
+          <Property Name="ID_размера_одежды" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="европейский" Type="int" Nullable="false" />
+          <Property Name="российский" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="склад">
+          <Key>
+            <PropertyRef Name="ID_склада" />
+          </Key>
+          <Property Name="ID_склада" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ID_адреса" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="сотрудник">
+          <Key>
+            <PropertyRef Name="ID_сотрудник" />
+          </Key>
+          <Property Name="ID_сотрудник" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="фамилия" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="имя" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="отчество" Type="nvarchar" MaxLength="255" />
+          <Property Name="дата_рождения" Type="date" Nullable="false" />
+          <Property Name="номер_телефона" Type="nvarchar" MaxLength="12" />
+        </EntityType>
+        <EntityType Name="статус_качества_товара">
+          <Key>
+            <PropertyRef Name="ID_статуса_качества_товара" />
+          </Key>
+          <Property Name="ID_статуса_качества_товара" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наименование_статуса" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="товары">
+          <Key>
+            <PropertyRef Name="ID_товара" />
+          </Key>
+          <Property Name="ID_товара" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="артикул" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="наименование_товара" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="фото" Type="text" Nullable="false" />
+          <Property Name="ID_категории_товара" Type="int" Nullable="false" />
+          <Property Name="ID_пола" Type="int" Nullable="false" />
+          <Property Name="ID_размера_одежды" Type="int" Nullable="false" />
+          <Property Name="ID_цвета" Type="int" Nullable="false" />
+          <Property Name="цена" Type="float" Nullable="false" />
+          <Property Name="описание" Type="nvarchar" MaxLength="455" Nullable="false" />
+          <Property Name="состав" Type="nvarchar" MaxLength="455" Nullable="false" />
+          <Property Name="ID_поставщиков" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="товары_на_складе">
+          <Key>
+            <PropertyRef Name="ID_товары_на_складе" />
+          </Key>
+          <Property Name="ID_товары_на_складе" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_склада" Type="int" Nullable="false" />
+          <Property Name="ID_товара" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="цвет">
+          <Key>
+            <PropertyRef Name="ID_цвета" />
+          </Key>
+          <Property Name="ID_цвета" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="наименование" Type="nvarchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <Association Name="FkадминистраторID">
+          <End Role="администратор" Type="Self.администратор" Multiplicity="1" />
+          <End Role="аунтификация_администратора" Type="Self.аунтификация_администратора" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="администратор">
+              <PropertyRef Name="ID_админ" />
+            </Principal>
+            <Dependent Role="аунтификация_администратора">
+              <PropertyRef Name="ID_админ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkадрес1ID">
+          <End Role="адрес" Type="Self.адрес" Multiplicity="1" />
+          <End Role="поставщики" Type="Self.поставщики" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="адрес">
+              <PropertyRef Name="ID_адреса" />
+            </Principal>
+            <Dependent Role="поставщики">
+              <PropertyRef Name="ID_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkадресID">
+          <End Role="адрес" Type="Self.адрес" Multiplicity="1" />
+          <End Role="склад" Type="Self.склад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="адрес">
+              <PropertyRef Name="ID_адреса" />
+            </Principal>
+            <Dependent Role="склад">
+              <PropertyRef Name="ID_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkкатегория_товараID">
+          <End Role="категория_товара" Type="Self.категория_товара" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="категория_товара">
+              <PropertyRef Name="ID_категории_товара" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_категории_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkполID">
+          <End Role="пол" Type="Self.пол" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="пол">
+              <PropertyRef Name="ID_пола" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_пола" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkпоставщикиID">
+          <End Role="поставщики" Type="Self.поставщики" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="поставщики">
+              <PropertyRef Name="ID_поставщиков" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_поставщиков" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkразмерыID">
+          <End Role="размеры" Type="Self.размеры" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="размеры">
+              <PropertyRef Name="ID_размера_одежды" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_размера_одежды" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkсклад1ID">
+          <End Role="склад" Type="Self.склад" Multiplicity="1" />
+          <End Role="товары_на_складе" Type="Self.товары_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="склад">
+              <PropertyRef Name="ID_склада" />
+            </Principal>
+            <Dependent Role="товары_на_складе">
+              <PropertyRef Name="ID_склада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkскладID">
+          <End Role="склад" Type="Self.склад" Multiplicity="1" />
+          <End Role="инвентаризация_склада" Type="Self.инвентаризация_склада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="склад">
+              <PropertyRef Name="ID_склада" />
+            </Principal>
+            <Dependent Role="инвентаризация_склада">
+              <PropertyRef Name="ID_склада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkсотрудник1ID">
+          <End Role="сотрудник" Type="Self.сотрудник" Multiplicity="1" />
+          <End Role="приемка_товара" Type="Self.приемка_товара" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудник">
+              <PropertyRef Name="ID_сотрудник" />
+            </Principal>
+            <Dependent Role="приемка_товара">
+              <PropertyRef Name="ID_сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkсотрудник3ID">
+          <End Role="сотрудник" Type="Self.сотрудник" Multiplicity="1" />
+          <End Role="аунтификация_сотрудника" Type="Self.аунтификация_сотрудника" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудник">
+              <PropertyRef Name="ID_сотрудник" />
+            </Principal>
+            <Dependent Role="аунтификация_сотрудника">
+              <PropertyRef Name="ID_сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkсотрудникID">
+          <End Role="сотрудник" Type="Self.сотрудник" Multiplicity="1" />
+          <End Role="инвентаризация_склада" Type="Self.инвентаризация_склада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудник">
+              <PropertyRef Name="ID_сотрудник" />
+            </Principal>
+            <Dependent Role="инвентаризация_склада">
+              <PropertyRef Name="ID_сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkстатус_качества_товараID">
+          <End Role="статус_качества_товара" Type="Self.статус_качества_товара" Multiplicity="1" />
+          <End Role="приемка_товара" Type="Self.приемка_товара" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="статус_качества_товара">
+              <PropertyRef Name="ID_статуса_качества_товара" />
+            </Principal>
+            <Dependent Role="приемка_товара">
+              <PropertyRef Name="ID_статуса_качества_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkтовары1ID">
+          <End Role="товары" Type="Self.товары" Multiplicity="1" />
+          <End Role="товары_на_складе" Type="Self.товары_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товары">
+              <PropertyRef Name="ID_товара" />
+            </Principal>
+            <Dependent Role="товары_на_складе">
+              <PropertyRef Name="ID_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkтовары2ID">
+          <End Role="товары" Type="Self.товары" Multiplicity="1" />
+          <End Role="приемка_товара" Type="Self.приемка_товара" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товары">
+              <PropertyRef Name="ID_товара" />
+            </Principal>
+            <Dependent Role="приемка_товара">
+              <PropertyRef Name="ID_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkтоварыID">
+          <End Role="товары" Type="Self.товары" Multiplicity="1" />
+          <End Role="инвентаризация_склада" Type="Self.инвентаризация_склада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товары">
+              <PropertyRef Name="ID_товара" />
+            </Principal>
+            <Dependent Role="инвентаризация_склада">
+              <PropertyRef Name="ID_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkцветID">
+          <End Role="цвет" Type="Self.цвет" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="цвет">
+              <PropertyRef Name="ID_цвета" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_цвета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище SkladTov3EnContainer">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="администратор" EntityType="Self.администратор" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="адрес" EntityType="Self.адрес" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="аунтификация_администратора" EntityType="Self.аунтификация_администратора" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="аунтификация_сотрудника" EntityType="Self.аунтификация_сотрудника" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="инвентаризация_склада" EntityType="Self.инвентаризация_склада" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="категория_товара" EntityType="Self.категория_товара" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="пол" EntityType="Self.пол" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="поставщики" EntityType="Self.поставщики" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="приемка_товара" EntityType="Self.приемка_товара" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="размеры" EntityType="Self.размеры" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="склад" EntityType="Self.склад" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="сотрудник" EntityType="Self.сотрудник" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="статус_качества_товара" EntityType="Self.статус_качества_товара" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="товары" EntityType="Self.товары" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="товары_на_складе" EntityType="Self.товары_на_складе" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="цвет" EntityType="Self.цвет" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FkадминистраторID" Association="Self.FkадминистраторID">
+            <End Role="администратор" EntitySet="администратор" />
+            <End Role="аунтификация_администратора" EntitySet="аунтификация_администратора" />
+          </AssociationSet>
+          <AssociationSet Name="Fkадрес1ID" Association="Self.Fkадрес1ID">
+            <End Role="адрес" EntitySet="адрес" />
+            <End Role="поставщики" EntitySet="поставщики" />
+          </AssociationSet>
+          <AssociationSet Name="FkадресID" Association="Self.FkадресID">
+            <End Role="адрес" EntitySet="адрес" />
+            <End Role="склад" EntitySet="склад" />
+          </AssociationSet>
+          <AssociationSet Name="Fkкатегория_товараID" Association="Self.Fkкатегория_товараID">
+            <End Role="категория_товара" EntitySet="категория_товара" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="FkполID" Association="Self.FkполID">
+            <End Role="пол" EntitySet="пол" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="FkпоставщикиID" Association="Self.FkпоставщикиID">
+            <End Role="поставщики" EntitySet="поставщики" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="FkразмерыID" Association="Self.FkразмерыID">
+            <End Role="размеры" EntitySet="размеры" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="Fkсклад1ID" Association="Self.Fkсклад1ID">
+            <End Role="склад" EntitySet="склад" />
+            <End Role="товары_на_складе" EntitySet="товары_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="FkскладID" Association="Self.FkскладID">
+            <End Role="склад" EntitySet="склад" />
+            <End Role="инвентаризация_склада" EntitySet="инвентаризация_склада" />
+          </AssociationSet>
+          <AssociationSet Name="Fkсотрудник1ID" Association="Self.Fkсотрудник1ID">
+            <End Role="сотрудник" EntitySet="сотрудник" />
+            <End Role="приемка_товара" EntitySet="приемка_товара" />
+          </AssociationSet>
+          <AssociationSet Name="Fkсотрудник3ID" Association="Self.Fkсотрудник3ID">
+            <End Role="сотрудник" EntitySet="сотрудник" />
+            <End Role="аунтификация_сотрудника" EntitySet="аунтификация_сотрудника" />
+          </AssociationSet>
+          <AssociationSet Name="FkсотрудникID" Association="Self.FkсотрудникID">
+            <End Role="сотрудник" EntitySet="сотрудник" />
+            <End Role="инвентаризация_склада" EntitySet="инвентаризация_склада" />
+          </AssociationSet>
+          <AssociationSet Name="Fkстатус_качества_товараID" Association="Self.Fkстатус_качества_товараID">
+            <End Role="статус_качества_товара" EntitySet="статус_качества_товара" />
+            <End Role="приемка_товара" EntitySet="приемка_товара" />
+          </AssociationSet>
+          <AssociationSet Name="Fkтовары1ID" Association="Self.Fkтовары1ID">
+            <End Role="товары" EntitySet="товары" />
+            <End Role="товары_на_складе" EntitySet="товары_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="Fkтовары2ID" Association="Self.Fkтовары2ID">
+            <End Role="товары" EntitySet="товары" />
+            <End Role="приемка_товара" EntitySet="приемка_товара" />
+          </AssociationSet>
+          <AssociationSet Name="FkтоварыID" Association="Self.FkтоварыID">
+            <End Role="товары" EntitySet="товары" />
+            <End Role="инвентаризация_склада" EntitySet="инвентаризация_склада" />
+          </AssociationSet>
+          <AssociationSet Name="FkцветID" Association="Self.FkцветID">
+            <End Role="цвет" EntitySet="цвет" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SkladTov3En" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="администратор">
+          <Key>
+            <PropertyRef Name="ID_админ" />
+          </Key>
+          <Property Name="ID_админ" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="фамилия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="отчество" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="дата_рождения" Type="DateTime" Nullable="false" />
+          <Property Name="номер_телефона" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="аунтификация_администратора" Relationship="Self.FkадминистраторID" FromRole="администратор" ToRole="аунтификация_администратора" />
+        </EntityType>
+        <EntityType Name="адрес">
+          <Key>
+            <PropertyRef Name="ID_адреса" />
+          </Key>
+          <Property Name="ID_адреса" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="страна" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="город" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="улица" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="дом" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="поставщики" Relationship="Self.Fkадрес1ID" FromRole="адрес" ToRole="поставщики" />
+          <NavigationProperty Name="склад" Relationship="Self.FkадресID" FromRole="адрес" ToRole="склад" />
+        </EntityType>
+        <EntityType Name="аунтификация_администратора">
+          <Key>
+            <PropertyRef Name="ID_аунтиф_админа" />
+          </Key>
+          <Property Name="ID_аунтиф_админа" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_админ" Type="Int32" Nullable="false" />
+          <Property Name="логин" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="пароль" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="администратор" Relationship="Self.FkадминистраторID" FromRole="аунтификация_администратора" ToRole="администратор" />
+        </EntityType>
+        <EntityType Name="аунтификация_сотрудника">
+          <Key>
+            <PropertyRef Name="ID_аунтиф_сотруд" />
+          </Key>
+          <Property Name="ID_аунтиф_сотруд" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_сотрудник" Type="Int32" Nullable="false" />
+          <Property Name="логин" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="пароль" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="сотрудник" Relationship="Self.Fkсотрудник3ID" FromRole="аунтификация_сотрудника" ToRole="сотрудник" />
+        </EntityType>
+        <EntityType Name="инвентаризация_склада">
+          <Key>
+            <PropertyRef Name="ID_инвентаризация_склада" />
+          </Key>
+          <Property Name="ID_инвентаризация_склада" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="дата_инвентаризации" Type="DateTime" Nullable="false" />
+          <Property Name="ID_склада" Type="Int32" Nullable="false" />
+          <Property Name="ID_товара" Type="Int32" Nullable="false" />
+          <Property Name="расчетный_остаток" Type="Int32" Nullable="false" />
+          <Property Name="фактический_остаток" Type="Int32" Nullable="false" />
+          <Property Name="ID_сотрудник" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="склад" Relationship="Self.FkскладID" FromRole="инвентаризация_склада" ToRole="склад" />
+          <NavigationProperty Name="сотрудник" Relationship="Self.FkсотрудникID" FromRole="инвентаризация_склада" ToRole="сотрудник" />
+          <NavigationProperty Name="товары" Relationship="Self.FkтоварыID" FromRole="инвентаризация_склада" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="категория_товара">
+          <Key>
+            <PropertyRef Name="ID_категории_товара" />
+          </Key>
+          <Property Name="ID_категории_товара" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="товары" Relationship="Self.Fkкатегория_товараID" FromRole="категория_товара" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="пол">
+          <Key>
+            <PropertyRef Name="ID_пола" />
+          </Key>
+          <Property Name="ID_пола" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="товары" Relationship="Self.FkполID" FromRole="пол" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="поставщики">
+          <Key>
+            <PropertyRef Name="ID_поставщиков" />
+          </Key>
+          <Property Name="ID_поставщиков" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наименование_поставщика" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="почта" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="номер_телефона" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_адреса" Type="Int32" Nullable="false" />
+          <Property Name="фамилия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="отчество" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ИНН" Type="String" MaxLength="12" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="адрес" Relationship="Self.Fkадрес1ID" FromRole="поставщики" ToRole="адрес" />
+          <NavigationProperty Name="товары" Relationship="Self.FkпоставщикиID" FromRole="поставщики" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="приемка_товара">
+          <Key>
+            <PropertyRef Name="ID_приемка_товара" />
+          </Key>
+          <Property Name="ID_приемка_товара" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_товара" Type="Int32" Nullable="false" />
+          <Property Name="ID_статуса_качества_товара" Type="Int32" Nullable="false" />
+          <Property Name="количество_поступления" Type="Int32" Nullable="false" />
+          <Property Name="количество_принятого_товара" Type="Int32" Nullable="false" />
+          <Property Name="ID_сотрудник" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="сотрудник" Relationship="Self.Fkсотрудник1ID" FromRole="приемка_товара" ToRole="сотрудник" />
+          <NavigationProperty Name="статус_качества_товара" Relationship="Self.Fkстатус_качества_товараID" FromRole="приемка_товара" ToRole="статус_качества_товара" />
+          <NavigationProperty Name="товары" Relationship="Self.Fkтовары2ID" FromRole="приемка_товара" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="размеры">
+          <Key>
+            <PropertyRef Name="ID_размера_одежды" />
+          </Key>
+          <Property Name="ID_размера_одежды" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="европейский" Type="Int32" Nullable="false" />
+          <Property Name="российский" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="товары" Relationship="Self.FkразмерыID" FromRole="размеры" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="склад">
+          <Key>
+            <PropertyRef Name="ID_склада" />
+          </Key>
+          <Property Name="ID_склада" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_адреса" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="адрес" Relationship="Self.FkадресID" FromRole="склад" ToRole="адрес" />
+          <NavigationProperty Name="инвентаризация_склада" Relationship="Self.FkскладID" FromRole="склад" ToRole="инвентаризация_склада" />
+          <NavigationProperty Name="товары_на_складе" Relationship="Self.Fkсклад1ID" FromRole="склад" ToRole="товары_на_складе" />
+        </EntityType>
+        <EntityType Name="сотрудник">
+          <Key>
+            <PropertyRef Name="ID_сотрудник" />
+          </Key>
+          <Property Name="ID_сотрудник" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="фамилия" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="имя" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="отчество" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="дата_рождения" Type="DateTime" Nullable="false" />
+          <Property Name="номер_телефона" Type="String" MaxLength="12" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="аунтификация_сотрудника" Relationship="Self.Fkсотрудник3ID" FromRole="сотрудник" ToRole="аунтификация_сотрудника" />
+          <NavigationProperty Name="инвентаризация_склада" Relationship="Self.FkсотрудникID" FromRole="сотрудник" ToRole="инвентаризация_склада" />
+          <NavigationProperty Name="приемка_товара" Relationship="Self.Fkсотрудник1ID" FromRole="сотрудник" ToRole="приемка_товара" />
+        </EntityType>
+        <EntityType Name="статус_качества_товара">
+          <Key>
+            <PropertyRef Name="ID_статуса_качества_товара" />
+          </Key>
+          <Property Name="ID_статуса_качества_товара" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наименование_статуса" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="приемка_товара" Relationship="Self.Fkстатус_качества_товараID" FromRole="статус_качества_товара" ToRole="приемка_товара" />
+        </EntityType>
+        <EntityType Name="товары">
+          <Key>
+            <PropertyRef Name="ID_товара" />
+          </Key>
+          <Property Name="ID_товара" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="артикул" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="наименование_товара" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="фото" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ID_категории_товара" Type="Int32" Nullable="false" />
+          <Property Name="ID_пола" Type="Int32" Nullable="false" />
+          <Property Name="ID_размера_одежды" Type="Int32" Nullable="false" />
+          <Property Name="ID_цвета" Type="Int32" Nullable="false" />
+          <Property Name="цена" Type="Double" Nullable="false" />
+          <Property Name="описание" Type="String" MaxLength="455" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="состав" Type="String" MaxLength="455" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID_поставщиков" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="инвентаризация_склада" Relationship="Self.FkтоварыID" FromRole="товары" ToRole="инвентаризация_склада" />
+          <NavigationProperty Name="категория_товара" Relationship="Self.Fkкатегория_товараID" FromRole="товары" ToRole="категория_товара" />
+          <NavigationProperty Name="пол" Relationship="Self.FkполID" FromRole="товары" ToRole="пол" />
+          <NavigationProperty Name="поставщики" Relationship="Self.FkпоставщикиID" FromRole="товары" ToRole="поставщики" />
+          <NavigationProperty Name="приемка_товара" Relationship="Self.Fkтовары2ID" FromRole="товары" ToRole="приемка_товара" />
+          <NavigationProperty Name="размеры" Relationship="Self.FkразмерыID" FromRole="товары" ToRole="размеры" />
+          <NavigationProperty Name="товары_на_складе" Relationship="Self.Fkтовары1ID" FromRole="товары" ToRole="товары_на_складе" />
+          <NavigationProperty Name="цвет" Relationship="Self.FkцветID" FromRole="товары" ToRole="цвет" />
+        </EntityType>
+        <EntityType Name="товары_на_складе">
+          <Key>
+            <PropertyRef Name="ID_товары_на_складе" />
+          </Key>
+          <Property Name="ID_товары_на_складе" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_склада" Type="Int32" Nullable="false" />
+          <Property Name="ID_товара" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="склад" Relationship="Self.Fkсклад1ID" FromRole="товары_на_складе" ToRole="склад" />
+          <NavigationProperty Name="товары" Relationship="Self.Fkтовары1ID" FromRole="товары_на_складе" ToRole="товары" />
+        </EntityType>
+        <EntityType Name="цвет">
+          <Key>
+            <PropertyRef Name="ID_цвета" />
+          </Key>
+          <Property Name="ID_цвета" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="наименование" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="товары" Relationship="Self.FkцветID" FromRole="цвет" ToRole="товары" />
+        </EntityType>
+        <Association Name="FkадминистраторID">
+          <End Role="администратор" Type="Self.администратор" Multiplicity="1" />
+          <End Role="аунтификация_администратора" Type="Self.аунтификация_администратора" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="администратор">
+              <PropertyRef Name="ID_админ" />
+            </Principal>
+            <Dependent Role="аунтификация_администратора">
+              <PropertyRef Name="ID_админ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkадрес1ID">
+          <End Role="адрес" Type="Self.адрес" Multiplicity="1" />
+          <End Role="поставщики" Type="Self.поставщики" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="адрес">
+              <PropertyRef Name="ID_адреса" />
+            </Principal>
+            <Dependent Role="поставщики">
+              <PropertyRef Name="ID_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkадресID">
+          <End Role="адрес" Type="Self.адрес" Multiplicity="1" />
+          <End Role="склад" Type="Self.склад" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="адрес">
+              <PropertyRef Name="ID_адреса" />
+            </Principal>
+            <Dependent Role="склад">
+              <PropertyRef Name="ID_адреса" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkсотрудник3ID">
+          <End Role="сотрудник" Type="Self.сотрудник" Multiplicity="1" />
+          <End Role="аунтификация_сотрудника" Type="Self.аунтификация_сотрудника" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудник">
+              <PropertyRef Name="ID_сотрудник" />
+            </Principal>
+            <Dependent Role="аунтификация_сотрудника">
+              <PropertyRef Name="ID_сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkскладID">
+          <End Role="склад" Type="Self.склад" Multiplicity="1" />
+          <End Role="инвентаризация_склада" Type="Self.инвентаризация_склада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="склад">
+              <PropertyRef Name="ID_склада" />
+            </Principal>
+            <Dependent Role="инвентаризация_склада">
+              <PropertyRef Name="ID_склада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkсотрудникID">
+          <End Role="сотрудник" Type="Self.сотрудник" Multiplicity="1" />
+          <End Role="инвентаризация_склада" Type="Self.инвентаризация_склада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудник">
+              <PropertyRef Name="ID_сотрудник" />
+            </Principal>
+            <Dependent Role="инвентаризация_склада">
+              <PropertyRef Name="ID_сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkтоварыID">
+          <End Role="товары" Type="Self.товары" Multiplicity="1" />
+          <End Role="инвентаризация_склада" Type="Self.инвентаризация_склада" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товары">
+              <PropertyRef Name="ID_товара" />
+            </Principal>
+            <Dependent Role="инвентаризация_склада">
+              <PropertyRef Name="ID_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkкатегория_товараID">
+          <End Role="категория_товара" Type="Self.категория_товара" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="категория_товара">
+              <PropertyRef Name="ID_категории_товара" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_категории_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkполID">
+          <End Role="пол" Type="Self.пол" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="пол">
+              <PropertyRef Name="ID_пола" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_пола" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkпоставщикиID">
+          <End Role="поставщики" Type="Self.поставщики" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="поставщики">
+              <PropertyRef Name="ID_поставщиков" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_поставщиков" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkсотрудник1ID">
+          <End Role="сотрудник" Type="Self.сотрудник" Multiplicity="1" />
+          <End Role="приемка_товара" Type="Self.приемка_товара" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="сотрудник">
+              <PropertyRef Name="ID_сотрудник" />
+            </Principal>
+            <Dependent Role="приемка_товара">
+              <PropertyRef Name="ID_сотрудник" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkстатус_качества_товараID">
+          <End Role="статус_качества_товара" Type="Self.статус_качества_товара" Multiplicity="1" />
+          <End Role="приемка_товара" Type="Self.приемка_товара" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="статус_качества_товара">
+              <PropertyRef Name="ID_статуса_качества_товара" />
+            </Principal>
+            <Dependent Role="приемка_товара">
+              <PropertyRef Name="ID_статуса_качества_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkтовары2ID">
+          <End Role="товары" Type="Self.товары" Multiplicity="1" />
+          <End Role="приемка_товара" Type="Self.приемка_товара" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товары">
+              <PropertyRef Name="ID_товара" />
+            </Principal>
+            <Dependent Role="приемка_товара">
+              <PropertyRef Name="ID_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkразмерыID">
+          <End Role="размеры" Type="Self.размеры" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="размеры">
+              <PropertyRef Name="ID_размера_одежды" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_размера_одежды" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkсклад1ID">
+          <End Role="склад" Type="Self.склад" Multiplicity="1" />
+          <End Role="товары_на_складе" Type="Self.товары_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="склад">
+              <PropertyRef Name="ID_склада" />
+            </Principal>
+            <Dependent Role="товары_на_складе">
+              <PropertyRef Name="ID_склада" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fkтовары1ID">
+          <End Role="товары" Type="Self.товары" Multiplicity="1" />
+          <End Role="товары_на_складе" Type="Self.товары_на_складе" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="товары">
+              <PropertyRef Name="ID_товара" />
+            </Principal>
+            <Dependent Role="товары_на_складе">
+              <PropertyRef Name="ID_товара" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FkцветID">
+          <End Role="цвет" Type="Self.цвет" Multiplicity="1" />
+          <End Role="товары" Type="Self.товары" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="цвет">
+              <PropertyRef Name="ID_цвета" />
+            </Principal>
+            <Dependent Role="товары">
+              <PropertyRef Name="ID_цвета" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="SkladTov3Enn" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="администратор" EntityType="Self.администратор" />
+          <EntitySet Name="адрес" EntityType="Self.адрес" />
+          <EntitySet Name="аунтификация_администратора" EntityType="Self.аунтификация_администратора" />
+          <EntitySet Name="аунтификация_сотрудника" EntityType="Self.аунтификация_сотрудника" />
+          <EntitySet Name="инвентаризация_склада" EntityType="Self.инвентаризация_склада" />
+          <EntitySet Name="категория_товара" EntityType="Self.категория_товара" />
+          <EntitySet Name="пол" EntityType="Self.пол" />
+          <EntitySet Name="поставщики" EntityType="Self.поставщики" />
+          <EntitySet Name="приемка_товара" EntityType="Self.приемка_товара" />
+          <EntitySet Name="размеры" EntityType="Self.размеры" />
+          <EntitySet Name="склад" EntityType="Self.склад" />
+          <EntitySet Name="сотрудник" EntityType="Self.сотрудник" />
+          <EntitySet Name="статус_качества_товара" EntityType="Self.статус_качества_товара" />
+          <EntitySet Name="товары" EntityType="Self.товары" />
+          <EntitySet Name="товары_на_складе" EntityType="Self.товары_на_складе" />
+          <EntitySet Name="цвет" EntityType="Self.цвет" />
+          <AssociationSet Name="FkадминистраторID" Association="Self.FkадминистраторID">
+            <End Role="администратор" EntitySet="администратор" />
+            <End Role="аунтификация_администратора" EntitySet="аунтификация_администратора" />
+          </AssociationSet>
+          <AssociationSet Name="Fkадрес1ID" Association="Self.Fkадрес1ID">
+            <End Role="адрес" EntitySet="адрес" />
+            <End Role="поставщики" EntitySet="поставщики" />
+          </AssociationSet>
+          <AssociationSet Name="FkадресID" Association="Self.FkадресID">
+            <End Role="адрес" EntitySet="адрес" />
+            <End Role="склад" EntitySet="склад" />
+          </AssociationSet>
+          <AssociationSet Name="Fkсотрудник3ID" Association="Self.Fkсотрудник3ID">
+            <End Role="сотрудник" EntitySet="сотрудник" />
+            <End Role="аунтификация_сотрудника" EntitySet="аунтификация_сотрудника" />
+          </AssociationSet>
+          <AssociationSet Name="FkскладID" Association="Self.FkскладID">
+            <End Role="склад" EntitySet="склад" />
+            <End Role="инвентаризация_склада" EntitySet="инвентаризация_склада" />
+          </AssociationSet>
+          <AssociationSet Name="FkсотрудникID" Association="Self.FkсотрудникID">
+            <End Role="сотрудник" EntitySet="сотрудник" />
+            <End Role="инвентаризация_склада" EntitySet="инвентаризация_склада" />
+          </AssociationSet>
+          <AssociationSet Name="FkтоварыID" Association="Self.FkтоварыID">
+            <End Role="товары" EntitySet="товары" />
+            <End Role="инвентаризация_склада" EntitySet="инвентаризация_склада" />
+          </AssociationSet>
+          <AssociationSet Name="Fkкатегория_товараID" Association="Self.Fkкатегория_товараID">
+            <End Role="категория_товара" EntitySet="категория_товара" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="FkполID" Association="Self.FkполID">
+            <End Role="пол" EntitySet="пол" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="FkпоставщикиID" Association="Self.FkпоставщикиID">
+            <End Role="поставщики" EntitySet="поставщики" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="Fkсотрудник1ID" Association="Self.Fkсотрудник1ID">
+            <End Role="сотрудник" EntitySet="сотрудник" />
+            <End Role="приемка_товара" EntitySet="приемка_товара" />
+          </AssociationSet>
+          <AssociationSet Name="Fkстатус_качества_товараID" Association="Self.Fkстатус_качества_товараID">
+            <End Role="статус_качества_товара" EntitySet="статус_качества_товара" />
+            <End Role="приемка_товара" EntitySet="приемка_товара" />
+          </AssociationSet>
+          <AssociationSet Name="Fkтовары2ID" Association="Self.Fkтовары2ID">
+            <End Role="товары" EntitySet="товары" />
+            <End Role="приемка_товара" EntitySet="приемка_товара" />
+          </AssociationSet>
+          <AssociationSet Name="FkразмерыID" Association="Self.FkразмерыID">
+            <End Role="размеры" EntitySet="размеры" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+          <AssociationSet Name="Fkсклад1ID" Association="Self.Fkсклад1ID">
+            <End Role="склад" EntitySet="склад" />
+            <End Role="товары_на_складе" EntitySet="товары_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="Fkтовары1ID" Association="Self.Fkтовары1ID">
+            <End Role="товары" EntitySet="товары" />
+            <End Role="товары_на_складе" EntitySet="товары_на_складе" />
+          </AssociationSet>
+          <AssociationSet Name="FkцветID" Association="Self.FkцветID">
+            <End Role="цвет" EntitySet="цвет" />
+            <End Role="товары" EntitySet="товары" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SkladTov3EnContainer" CdmEntityContainer="SkladTov3Enn">
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SkladTov3En.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="администратор">
+            <EntityTypeMapping TypeName="SkladTov3En.администратор">
+              <MappingFragment StoreEntitySet="администратор">
+                <ScalarProperty Name="ID_админ" ColumnName="ID_админ" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="дата_рождения" ColumnName="дата_рождения" />
+                <ScalarProperty Name="номер_телефона" ColumnName="номер_телефона" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="адрес">
+            <EntityTypeMapping TypeName="SkladTov3En.адрес">
+              <MappingFragment StoreEntitySet="адрес">
+                <ScalarProperty Name="ID_адреса" ColumnName="ID_адреса" />
+                <ScalarProperty Name="страна" ColumnName="страна" />
+                <ScalarProperty Name="город" ColumnName="город" />
+                <ScalarProperty Name="улица" ColumnName="улица" />
+                <ScalarProperty Name="дом" ColumnName="дом" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="аунтификация_администратора">
+            <EntityTypeMapping TypeName="SkladTov3En.аунтификация_администратора">
+              <MappingFragment StoreEntitySet="аунтификация_администратора">
+                <ScalarProperty Name="ID_аунтиф_админа" ColumnName="ID_аунтиф_админа" />
+                <ScalarProperty Name="ID_админ" ColumnName="ID_админ" />
+                <ScalarProperty Name="логин" ColumnName="логин" />
+                <ScalarProperty Name="пароль" ColumnName="пароль" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="аунтификация_сотрудника">
+            <EntityTypeMapping TypeName="SkladTov3En.аунтификация_сотрудника">
+              <MappingFragment StoreEntitySet="аунтификация_сотрудника">
+                <ScalarProperty Name="ID_аунтиф_сотруд" ColumnName="ID_аунтиф_сотруд" />
+                <ScalarProperty Name="ID_сотрудник" ColumnName="ID_сотрудник" />
+                <ScalarProperty Name="логин" ColumnName="логин" />
+                <ScalarProperty Name="пароль" ColumnName="пароль" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="инвентаризация_склада">
+            <EntityTypeMapping TypeName="SkladTov3En.инвентаризация_склада">
+              <MappingFragment StoreEntitySet="инвентаризация_склада">
+                <ScalarProperty Name="ID_инвентаризация_склада" ColumnName="ID_инвентаризация_склада" />
+                <ScalarProperty Name="дата_инвентаризации" ColumnName="дата_инвентаризации" />
+                <ScalarProperty Name="ID_склада" ColumnName="ID_склада" />
+                <ScalarProperty Name="ID_товара" ColumnName="ID_товара" />
+                <ScalarProperty Name="расчетный_остаток" ColumnName="расчетный_остаток" />
+                <ScalarProperty Name="фактический_остаток" ColumnName="фактический_остаток" />
+                <ScalarProperty Name="ID_сотрудник" ColumnName="ID_сотрудник" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="категория_товара">
+            <EntityTypeMapping TypeName="SkladTov3En.категория_товара">
+              <MappingFragment StoreEntitySet="категория_товара">
+                <ScalarProperty Name="ID_категории_товара" ColumnName="ID_категории_товара" />
+                <ScalarProperty Name="наименование" ColumnName="наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="пол">
+            <EntityTypeMapping TypeName="SkladTov3En.пол">
+              <MappingFragment StoreEntitySet="пол">
+                <ScalarProperty Name="ID_пола" ColumnName="ID_пола" />
+                <ScalarProperty Name="наименование" ColumnName="наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="поставщики">
+            <EntityTypeMapping TypeName="SkladTov3En.поставщики">
+              <MappingFragment StoreEntitySet="поставщики">
+                <ScalarProperty Name="ID_поставщиков" ColumnName="ID_поставщиков" />
+                <ScalarProperty Name="наименование_поставщика" ColumnName="наименование_поставщика" />
+                <ScalarProperty Name="почта" ColumnName="почта" />
+                <ScalarProperty Name="номер_телефона" ColumnName="номер_телефона" />
+                <ScalarProperty Name="ID_адреса" ColumnName="ID_адреса" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="ИНН" ColumnName="ИНН" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="приемка_товара">
+            <EntityTypeMapping TypeName="SkladTov3En.приемка_товара">
+              <MappingFragment StoreEntitySet="приемка_товара">
+                <ScalarProperty Name="ID_приемка_товара" ColumnName="ID_приемка_товара" />
+                <ScalarProperty Name="ID_товара" ColumnName="ID_товара" />
+                <ScalarProperty Name="ID_статуса_качества_товара" ColumnName="ID_статуса_качества_товара" />
+                <ScalarProperty Name="количество_поступления" ColumnName="количество_поступления" />
+                <ScalarProperty Name="количество_принятого_товара" ColumnName="количество_принятого_товара" />
+                <ScalarProperty Name="ID_сотрудник" ColumnName="ID_сотрудник" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="размеры">
+            <EntityTypeMapping TypeName="SkladTov3En.размеры">
+              <MappingFragment StoreEntitySet="размеры">
+                <ScalarProperty Name="ID_размера_одежды" ColumnName="ID_размера_одежды" />
+                <ScalarProperty Name="европейский" ColumnName="европейский" />
+                <ScalarProperty Name="российский" ColumnName="российский" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="склад">
+            <EntityTypeMapping TypeName="SkladTov3En.склад">
+              <MappingFragment StoreEntitySet="склад">
+                <ScalarProperty Name="ID_склада" ColumnName="ID_склада" />
+                <ScalarProperty Name="наименование" ColumnName="наименование" />
+                <ScalarProperty Name="ID_адреса" ColumnName="ID_адреса" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="сотрудник">
+            <EntityTypeMapping TypeName="SkladTov3En.сотрудник">
+              <MappingFragment StoreEntitySet="сотрудник">
+                <ScalarProperty Name="ID_сотрудник" ColumnName="ID_сотрудник" />
+                <ScalarProperty Name="фамилия" ColumnName="фамилия" />
+                <ScalarProperty Name="имя" ColumnName="имя" />
+                <ScalarProperty Name="отчество" ColumnName="отчество" />
+                <ScalarProperty Name="дата_рождения" ColumnName="дата_рождения" />
+                <ScalarProperty Name="номер_телефона" ColumnName="номер_телефона" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="статус_качества_товара">
+            <EntityTypeMapping TypeName="SkladTov3En.статус_качества_товара">
+              <MappingFragment StoreEntitySet="статус_качества_товара">
+                <ScalarProperty Name="ID_статуса_качества_товара" ColumnName="ID_статуса_качества_товара" />
+                <ScalarProperty Name="наименование_статуса" ColumnName="наименование_статуса" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="товары">
+            <EntityTypeMapping TypeName="SkladTov3En.товары">
+              <MappingFragment StoreEntitySet="товары">
+                <ScalarProperty Name="ID_товара" ColumnName="ID_товара" />
+                <ScalarProperty Name="артикул" ColumnName="артикул" />
+                <ScalarProperty Name="наименование_товара" ColumnName="наименование_товара" />
+                <ScalarProperty Name="фото" ColumnName="фото" />
+                <ScalarProperty Name="ID_категории_товара" ColumnName="ID_категории_товара" />
+                <ScalarProperty Name="ID_пола" ColumnName="ID_пола" />
+                <ScalarProperty Name="ID_размера_одежды" ColumnName="ID_размера_одежды" />
+                <ScalarProperty Name="ID_цвета" ColumnName="ID_цвета" />
+                <ScalarProperty Name="цена" ColumnName="цена" />
+                <ScalarProperty Name="описание" ColumnName="описание" />
+                <ScalarProperty Name="состав" ColumnName="состав" />
+                <ScalarProperty Name="ID_поставщиков" ColumnName="ID_поставщиков" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="товары_на_складе">
+            <EntityTypeMapping TypeName="SkladTov3En.товары_на_складе">
+              <MappingFragment StoreEntitySet="товары_на_складе">
+                <ScalarProperty Name="ID_товары_на_складе" ColumnName="ID_товары_на_складе" />
+                <ScalarProperty Name="ID_склада" ColumnName="ID_склада" />
+                <ScalarProperty Name="ID_товара" ColumnName="ID_товара" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="цвет">
+            <EntityTypeMapping TypeName="SkladTov3En.цвет">
+              <MappingFragment StoreEntitySet="цвет">
+                <ScalarProperty Name="ID_цвета" ColumnName="ID_цвета" />
+                <ScalarProperty Name="наименование" ColumnName="наименование" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

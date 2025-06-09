@@ -1,0 +1,105 @@
+﻿<Window x:Class="Kursovaya.Postavshiki"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Kursovaya"
+        mc:Ignorable="d"
+              Title="Поставщики"  Height="1080" Width="1920"  Background="#333533">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+            <ColumnDefinition Width="2.0*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="1.0*"></ColumnDefinition>
+            <ColumnDefinition Width="0.5*"></ColumnDefinition>
+            <ColumnDefinition Width="0.1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="0.6*"></RowDefinition>
+            <RowDefinition Height="1.0*"></RowDefinition>
+            <RowDefinition Height="1.0*"></RowDefinition>
+            <RowDefinition Height="1.0*"></RowDefinition>
+            <RowDefinition Height="1.0*"></RowDefinition>
+            <RowDefinition Height="1.0*"></RowDefinition>
+            <RowDefinition Height="3.0*"></RowDefinition>
+            <RowDefinition Height="3.0*"></RowDefinition>
+            <RowDefinition Height="0.5*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+
+        <!--шапка-->
+        <!--лого фото-->
+        <Viewbox Grid.Row="1" Grid.Column="1" Grid.RowSpan="3" HorizontalAlignment="Right">
+            <Canvas Width="570" Height="160" >
+                <Image   Source="/Photo/LogoTrand.png"  Height="160" Width="550"  />
+            </Canvas>
+        </Viewbox>
+
+        <!--Фон-->
+        <Rectangle Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="10" Grid.RowSpan="4"  Fill="#B29549D6" OpacityMask="Black" StrokeThickness="5" />
+        <!--поиск-->
+        <TextBox Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="4" x:Name="TBSearch" IsEnabled="True" TextWrapping="Wrap"  FontSize="35"/>
+        <Button x:Name="BttnSearch" Grid.Row="2" Grid.Column="7"  Content="Поиск" FontSize="26" Background="#FF5F5F5F" Foreground="White" Height="50"  />
+
+
+        <!--Лайн фонкций-->
+        <Rectangle Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"  Fill="#7C9549D6" OpacityMask="Black" StrokeThickness="5" />
+
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="11"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="9"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="8"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="7"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="6"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="5"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+        <Rectangle Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="4"    StrokeThickness="5" Stroke="#FF7D7D7D" />
+
+        <!--список функций-->
+        <!--Главная-->
+
+        <Label x:Name="LabelGlavnaya" Content="Главная" Grid.Row="4" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40" Foreground="White" MouseLeftButtonDown="LabelGlavnaya_MouseLeftButtonDown"/>
+
+        <!--Товары-->
+        <Label x:Name="LabelTovari" Content="Товары" Grid.Row="5" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40" Foreground="White" MouseLeftButtonDown="LabelTovari_MouseLeftButtonDown" />
+
+        <!--Склад-->
+        <Label x:Name="LabelSklad" Content="Склад" Grid.Row="6" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40" Foreground="White" MouseLeftButtonDown="LabelSklad_MouseLeftButtonDown"/>
+
+        <!--Поставщики-->
+        <Label x:Name="LabelPostavshiki" Content="Поставщики" Grid.Row="7" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40" Foreground="White" MouseLeftButtonDown="LabelPostavshiki_MouseLeftButtonDown"/>
+
+        <!--Инвентаризация-->
+        <Label x:Name="LabelInventariz" Content="Инвентаризация" Grid.Row="8" Grid.Column="1" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="40" Foreground="White" MouseLeftButtonDown="LabelInventariz_MouseLeftButtonDown"/>
+
+        
+
+        <DataGrid x:Name="DtGrdPostavki" Grid.Row="5" Grid.Column="3" Grid.RowSpan="6"  Grid.ColumnSpan="8"  AutoGenerateColumns="False" Background="#FF6B6B6B" OpacityMask="#FF6F6F6F" BorderBrush="#FF797979" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Код поставщика"  Binding="{Binding поставщики.ID_поставщиков}" CanUserResize="False"></DataGridTextColumn>
+                <DataGridTextColumn Header="Наименование поставщика" Binding="{Binding поставщики.наименование_поставщика}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Почта" Binding="{Binding поставщики.почта}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Номер телефона" Binding="{Binding поставщики.номер_телефона}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Страна" Binding="{Binding адрес.страна}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Город" Binding="{Binding адрес.город}"></DataGridTextColumn>
+                <DataGridTextColumn Header="улица" Binding="{Binding адрес.улица}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Дом" Binding="{Binding адрес.дом}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Фамилия" Binding="{Binding поставщики.фамилия}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Имя" Binding="{Binding поставщики.имя}"></DataGridTextColumn>
+                <DataGridTextColumn Header="Отчество" Binding="{Binding поставщики.отчество}"></DataGridTextColumn>
+                <DataGridTextColumn Header="ИНН" Binding="{Binding поставщики.ИНН}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

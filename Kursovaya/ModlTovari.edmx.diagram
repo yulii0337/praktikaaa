@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="78c3b7d1331b48aca4fd43e95b7447e9" Name="Diagram1">
+        <EntityTypeShape EntityType="ModelSkladTovar.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.администратор" Width="1.5" PointX="9.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.адрес" Width="1.5" PointX="0.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.аунтификация_администратора" Width="1.5" PointX="12" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.аунтификация_сотрудника" Width="1.5" PointX="7.5" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.инвентаризация_склада" Width="1.5" PointX="7.5" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.категория_товара" Width="1.5" PointX="3" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.пол" Width="1.5" PointX="3" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.поставщики" Width="1.5" PointX="3" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.приемка_товара" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.размеры" Width="1.5" PointX="3" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.склад" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.сотрудник" Width="1.5" PointX="5.25" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.статус_качества_товара" Width="1.5" PointX="5.25" PointY="13" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.товары" Width="1.5" PointX="5.25" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.товары_на_складе" Width="1.5" PointX="10.5" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="ModelSkladTovar.цвет" Width="1.5" PointX="3" PointY="17.875" IsExpanded="true" />
+        <AssociationConnector Association="ModelSkladTovar.FkадминистраторID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkадрес1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkадресID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkсотрудник3ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkскладID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkсотрудникID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkтоварыID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkкатегория_товараID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkполID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkпоставщикиID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkсотрудник1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkстатус_качества_товараID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkтовары2ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkразмерыID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkсклад1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.Fkтовары1ID" ManuallyRouted="false" />
+        <AssociationConnector Association="ModelSkladTovar.FkцветID" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
